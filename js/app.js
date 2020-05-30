@@ -44,14 +44,13 @@ function deleteBook(index) {
     } else {
         bookObj = JSON.parse(getBooks);
     }
-    let array = JSON.stringify(bookObj);
-    console.log(`array: `+ array[index]['author']);
+    let bookName = bookObj[index].name;
     bookObj.splice(index, 1);
     localStorage.setItem('books', JSON.stringify(bookObj));
     let message = document.getElementById('message');
     let boldText = 'Deleted';
     message.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>${boldText}: </strong> Your book has been deleted
+                            <strong>${boldText}: </strong> The book ${bookName} has been deleted from the library
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                             </button>
